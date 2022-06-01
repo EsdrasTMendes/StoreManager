@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const model = require('./models/SuaModel');
+const Products = require('./models/ProductsModel');
 
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
@@ -9,7 +9,7 @@ app.get('/', (_request, response) => {
 });
 
 app.get('/products', async (_request, response) => {
-const products = await model.getAll();
+const products = await Products.getAll();
 if (!products) response.status(401).json({ message: 'nenhum produto encontrado' });
 response.status(200).json(products);
 });
