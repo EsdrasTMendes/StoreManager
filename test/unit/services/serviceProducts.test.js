@@ -72,9 +72,11 @@ describe('Testa a função verifyProducts: ', () => {
 
     it('verifica se retorna um objeto de erro', async () => {
       const products = await Products.verifyProducts();
+      expect(products.length).to.be.equal(1);
       expect(products).to.be.exist;
       expect(products).to.be.a('array');
       expect(products[0]).to.be.exist;
+      expect(products[0]).to.have.property('error')
       expect(products[0].error).to.be.a('object');
     })
     it('verifica se o objeto possui duas as chaves code e message', async () => {
