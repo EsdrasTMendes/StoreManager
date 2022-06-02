@@ -8,7 +8,10 @@ const findSales = async (_req, res) => {
 const findSaleById = async (req, res) => {
   const { id } = req.params;
   const result = await Sales.verifygetSaleById(id);
-  res.status(200).json(result);
+  if (result.message) {
+    return res.status(404).json(result);
+  }
+  return res.status(200).json(result);
 };
 
 module.exports = {

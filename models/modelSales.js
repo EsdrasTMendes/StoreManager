@@ -12,12 +12,13 @@ return sales;
 
 const getSaleById = async (id) => {
   const [Sale] = await connection.execute(
-    `SELECT sp.sale_id ,s.date , sp.product_id AS productId, sp.quantity FROM 
+    `SELECT s.date , sp.product_id AS productId, sp.quantity FROM 
     StoreManager.sales_products sp
     INNER JOIN StoreManager.sales s
     ON sp.sale_id = s.id
     WHERE s.id = ?`, [id],
   );
+  console.log('MODEL', Sale);
   return Sale;
 };
 

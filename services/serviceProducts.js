@@ -18,7 +18,7 @@ const verifygetProductById = async (id) => {
   if (product.length === 0) {
     return { message: 'Product not found' };
   }
-  return product;
+  return product[0];
 };
 
 module.exports = {

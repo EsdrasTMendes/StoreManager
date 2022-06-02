@@ -7,7 +7,10 @@ const findProducts = async (_req, res) => {
 const findProductById = async (req, res) => {
   const { id } = req.params;
   const result = await Products.verifygetProductById(id);
-  res.status(200).json(result);
+  if (result.message) {
+    return res.status(404).json(result);
+  }
+  return res.status(200).json(result);
 };
 module.exports = {
   findProducts,
