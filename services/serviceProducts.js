@@ -13,6 +13,15 @@ const verifyProducts = async () => {
   return allProductsReturn;
 };
 
+const verifygetProductById = async (id) => {
+  const product = await Products.getProductById(id);
+  if (product.length === 0) {
+    return { message: 'Product not found' };
+  }
+  return product;
+};
+
 module.exports = {
   verifyProducts,
+  verifygetProductById,
 };

@@ -13,6 +13,15 @@ const verifySales = async () => {
   return allSalesReturn;
 };
 
+const verifygetSaleById = async (id) => {
+  const sale = await Sales.getSaleById(id);
+  if (sale.length === 0) {
+    return { message: 'sale not found' };
+  }
+  return sale;
+};
+
 module.exports = {
   verifySales,
+  verifygetSaleById,
 };

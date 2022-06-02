@@ -32,6 +32,7 @@ describe('Testa a função verifyProducts: ', () => {
 
     it('verifica se existe um array no retorno', async () => {
       const products = await Products.verifyProducts();
+      expect(!products).to.be.false;
       expect(executeSpy.callCount).to.be.equal(1);
       expect(products).to.be.exist;
       expect(products).to.be.a('array');
