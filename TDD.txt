@@ -1,0 +1,13 @@
+Organização do trabalho StoreManager
+
+1- Testar 35% de cobertura dos testes. 
+ - ao testar a model mockar os dados do banco de dados da minha camada model.
+ - preciso validar se a cobertura total das linhas dos arquivos de cada camada é maior ou igual a 35%.
+ - será validada que ao menos 24 linhas são cobertas por testes. 
+
+ 2- Implementar a criação de endpoints para listar os produtos e as vendas. 
+- Todos com o padrão REST
+- Cada camada com respectivo diretório
+- Arquivo index.js;
+- Conexão com o banco. 
+

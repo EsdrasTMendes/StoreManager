@@ -1,4 +1,3 @@
-// Renomeie esse arquivo
 const connection = require('./connection');
 
 const getAllProducts = async () => {
