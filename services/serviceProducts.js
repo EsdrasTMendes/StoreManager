@@ -42,10 +42,11 @@ const updateProduct = async (id, name, quantity) => {
 
 const deleteProduct = async (id) => {
   const productAlreadyExist = await Products.getProductById(id);
-  if (productAlreadyExist.length === 0) {
-    return { message: 'Product not found' };
+  if (productAlreadyExist.length > 0) {
+    Products.deleteProduct(id);
+    return {};
   }
-  Products.deleteProduct(id);
+  return { message: 'Product not found' };
 };
 
 module.exports = {
