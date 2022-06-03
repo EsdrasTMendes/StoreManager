@@ -12,7 +12,18 @@ const findProductById = async (req, res) => {
   }
   return res.status(200).json(result);
 };
+const createProduct = async (req, res) => {
+  const { name, quantity } = req.body;
+  const product = await Products.createProduct(name, quantity);
+  if (product.message) {
+    console.log('CONTROLER ERRROR', product);
+    return res.status(409).json(product);
+  }
+  console.log('CONTROLER SUCESS', product);
+  res.status(201).json(product);
+};
 module.exports = {
   findProducts,
   findProductById,
+  createProduct,
 };

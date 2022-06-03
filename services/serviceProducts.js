@@ -21,7 +21,20 @@ const verifygetProductById = async (id) => {
   return product[0];
 };
 
+const createProduct = async (name, quantity) => {
+  const productAlreadyExist = await Products.getProductByName(name);
+  
+  if (productAlreadyExist.length > 0) {
+    console.log('SERVICE Já existe, doidão', productAlreadyExist);
+    return { message: 'Product already exists' };
+  }
+  const [product] = await Products.createProducts(name, quantity);
+  console.log(product);
+  return product;
+};
+
 module.exports = {
   verifyProducts,
   verifygetProductById,
+  createProduct,
 };
