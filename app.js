@@ -15,6 +15,10 @@ app.get('/', (_request, response) => {
 app.get('/products', products.findProducts);
 app.get('/products/:id', products.findProductById);
 app.post('/products', productsMiddleware, products.createProduct);
+app.put('/products/:id', products.updateProduct);
+app.delete('/products/:id', products.deleteProduct);
+
+// sales
 app.get('/sales', sales.findSales);
 app.get('/sales/:id', sales.findSaleById);
 app.post('/sales', salesMiddleware, (_req, _res) => {

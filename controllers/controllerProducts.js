@@ -16,14 +16,34 @@ const createProduct = async (req, res) => {
   const { name, quantity } = req.body;
   const product = await Products.createProduct(name, quantity);
   if (product.message) {
-    console.log('CONTROLER ERRROR', product);
     return res.status(409).json(product);
   }
-  console.log('CONTROLER SUCESS', product);
   res.status(201).json(product);
 };
+
+const updateProduct = async (req, res) => {
+const { id } = req.params;
+const { name, quantity } = req.body;
+const product = await Products.updateProduct(id, name, quantity);
+if (product.message) {
+  return res.status(404).json(product);
+}
+res.status(200).json(product);
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const product = await Products.deleteProduct(id);
+  if (product.message) {
+    return res.status(404).json(product);
+  }
+  res.status(204).json();
+};
+
 module.exports = {
   findProducts,
   findProductById,
   createProduct,
+  updateProduct,
+  deleteProduct,
 };

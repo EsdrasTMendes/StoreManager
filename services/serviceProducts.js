@@ -25,16 +25,33 @@ const createProduct = async (name, quantity) => {
   const productAlreadyExist = await Products.getProductByName(name);
   
   if (productAlreadyExist.length > 0) {
-    console.log('SERVICE Já existe, doidão', productAlreadyExist);
     return { message: 'Product already exists' };
   }
   const [product] = await Products.createProducts(name, quantity);
-  console.log(product);
   return product;
+};
+
+const updateProduct = async (id, name, quantity) => {
+  const productAlreadyExist = await Products.getProductById(id);
+  if (productAlreadyExist.length === 0) {
+    return { message: 'Product not found' };
+  }
+  const productReturn = await Products.updateProduct(id, name, quantity);
+  return productReturn;
+};
+
+const deleteProduct = async (id) => {
+  const productAlreadyExist = await Products.getProductById(id);
+  if (productAlreadyExist.length === 0) {
+    return { message: 'Product not found' };
+  }
+  Products.deleteProduct(id);
 };
 
 module.exports = {
   verifyProducts,
   verifygetProductById,
   createProduct,
+  updateProduct,
+  deleteProduct,
 };
