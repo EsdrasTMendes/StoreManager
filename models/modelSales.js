@@ -36,7 +36,7 @@ const registerSalesProducts = async (SalesProducts) => {
     .execute(query, [id, productId, quantity]));
     return {
       id: 1, 
-      ItemsSold: SalesProducts,
+      itemsSold: SalesProducts,
     };
 };
 
