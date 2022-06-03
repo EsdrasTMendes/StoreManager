@@ -21,7 +21,14 @@ const verifygetSaleById = async (id) => {
   return sale;
 };
 
+const registerSalesProducts = async (salesArray) => {
+  const sale = await Sales.registerSalesProducts(salesArray);
+  console.log('SERVICE', sale);
+  return sale;
+};
+
 module.exports = {
   verifySales,
   verifygetSaleById,
+  registerSalesProducts,
 };

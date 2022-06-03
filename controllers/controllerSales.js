@@ -14,7 +14,14 @@ const findSaleById = async (req, res) => {
   return res.status(200).json(result);
 };
 
+const registerSalesProducts = async (req, res) => {
+  const sales = req.body;
+  const result = await Sales.registerSalesProducts(sales);
+  return res.status(201).json(result);
+};
+
 module.exports = {
   findSales,
   findSaleById,
+  registerSalesProducts,
 };

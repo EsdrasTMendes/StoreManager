@@ -21,9 +21,7 @@ app.delete('/products/:id', products.deleteProduct);
 // sales
 app.get('/sales', sales.findSales);
 app.get('/sales/:id', sales.findSaleById);
-app.post('/sales', salesMiddleware, (_req, _res) => {
-  console.log('TESTE sales');
-});
+app.post('/sales', salesMiddleware, sales.registerSalesProducts);
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
 // você deve usar o arquivo index.js para executar sua aplicação 

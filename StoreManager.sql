@@ -37,8 +37,8 @@ INSERT INTO StoreManager.products (name, quantity) VALUES
     ("Escudo do Capitão América", 30);
 
 INSERT INTO StoreManager.sales (date) VALUES
-    (NOW()),
-    (NOW());
+(NOW()),
+(NOW());
 
 INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES
     (1, 1, 5),
