@@ -18,7 +18,6 @@ const getSaleById = async (id) => {
     ON sp.sale_id = s.id
     WHERE s.id = ?`, [id],
   );
-  console.log('MODEL', Sale);
   return Sale;
 };
 
@@ -32,6 +31,7 @@ const registerSalesProducts = async (SalesProducts) => {
   const id = await registerSale();
   const query = `INSERT INTO StoreManager
     .sales_products (sale_id ,product_id, quantity) VALUES (?, ?, ?)`;
+    // Refatorar 
   SalesProducts.map(({ productId, quantity }) => connection
     .execute(query, [id, productId, quantity]));
     return {
@@ -40,8 +40,28 @@ const registerSalesProducts = async (SalesProducts) => {
     };
 };
 
+const uptadeSales = async (saleId, productId, quantity) => {
+  console.log('Model', saleId, productId, saleId);
+  const query = `UPDATE StoreManager
+    .sales_products AS sp INNER JOIN StoreManager.sales AS s 
+    ON sp.sale_id = s.id 
+    SET product_id = ?, quantity = ?
+    WHERE sp.sale_id = ?`;
+    await connection.execute(query, [productId, quantity, saleId]);
+    return {
+      saleId, 
+      itemUpdated: [
+        {
+          productId,
+          quantity,
+        },
+      ],
+    };
+};
+
 module.exports = {
   getAllSales,
   getSaleById,
   registerSalesProducts,
+  uptadeSales,
 };

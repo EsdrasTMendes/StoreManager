@@ -20,8 +20,17 @@ const registerSalesProducts = async (req, res) => {
   return res.status(201).json(result);
 };
 
+const updateSale = async (req, res) => {
+  const { id } = req.params;
+  const { productId, quantity } = req.body[0];
+  const result = await Sales.updateSale(id, productId, quantity);
+  // console.log('CONTROLER', result);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   findSales,
   findSaleById,
   registerSalesProducts,
+  updateSale,
 };

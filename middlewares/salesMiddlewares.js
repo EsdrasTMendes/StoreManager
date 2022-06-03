@@ -1,6 +1,5 @@
 const salesMiddleware = (req, res, next) => {
   const { productId, quantity } = req.body[0];
-  console.log('MIDDLEWARE', productId);
   if (!productId) {
     return res.status(400).json({ message: '"productId" is required' });
   }
