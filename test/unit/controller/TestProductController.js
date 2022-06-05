@@ -23,19 +23,19 @@ describe('Testa a rota get/products', () => {
 
 describe('Testa a rota post/products', () => {
   const response = {};
-const request = {};
+  const request = {};
 before(() => {
-  request.body = { name, quantity};
-  request.params = { id };
+  request.body = {};
+  request.params = {};
   response.status = sinon.stub().returns(response);
   response.json = sinon.stub().returns();
-  sinon.stub(Products, 'updateProduct').resolves([]);
+  sinon.stub(Products, 'createProduct').resolves([]);
 });
 after(() => {
-  Products.updateProduct.restore();
+  Products.createProduct.restore();
 });
-  it('verifica se retorna um status 200', async () => {
-    const result = await Controller.updateProduct(request, response);
-    expect(response.status.calledWith(200)).to.be.equal(true);
+  it('verifica se retorna um status 201', async () => {
+    const result = await Controller.createProduct(request, response);
+    expect(response.status.calledWith(201)).to.be.equal(true);
   })
 })
